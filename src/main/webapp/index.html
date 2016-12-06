@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" ng-app>
+<html lang="en" dir="ltr" ng-app="tastyfood">
 <head>
 <title>Fresh Ideas</title>
 <meta charset="UTF-8">
 <!--[if lt IE 9]><script src="js/html5.js"></script><![endif]-->
-  <script src="js/angular.min.js"></script>
+  <script src="libs/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/recipesController.js"></script>
 <link rel="stylesheet" type="text/css" href="css/styles.css">
   <link rel="stylesheet" type="text/css" href="css/tastyfood.css">
 </head>
@@ -43,10 +45,19 @@
   </header>
   <!--start holder-->
   <div class="holder_content">
-    <section class="group1">
-      <h3>Services</h3>
+    <section class="group1" ng-controller="recipesController">
+      <h3>Recipes {{test}}</h3>
       <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. Vestibulum condimentum facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy. Cras quis libero.</p>
-      <article class="holder_gallery"> <a class="photo_hover2" href="#"><img src="images/picture2.jpg" width="150" height="99" alt=""></a>
+
+      <article class="holder_gallery" ng-repeat="recipe in recipes">
+        <a class="photo_hover2" href="#"><img src="{{recipe.image}}" width="150" height="99" alt=""></a>
+        <h2>{{recipe.title}}</h2>
+        <p>{{recipe.content}}</p>
+        <span class="readmore"><a href="#">Read more..</a></span>
+      </article>
+
+
+      <!--<article class="holder_gallery"> <a class="photo_hover2" href="#"><img src="images/picture2.jpg" width="150" height="99" alt=""></a>
         <h2>Lorem ipsum</h2>
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. Vestibulum condimentum facilisis nulla. In hac habitasse platea dictumst. </p>
         <span class="readmore"><a href="#">Read more..</a></span> </article>
@@ -57,7 +68,8 @@
       <article class="holder_gallery"> <a class="photo_hover2" href="#"><img src="images/picture5.jpg" width="150" height="99" alt=""></a>
         <h2>Lorem ipsum</h2>
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. Vestibulum condimentum facilisis nulla. In hac habitasse platea dictumst. </p>
-        <span class="readmore"><a href="#">Read more..</a></span> </article>
+        <span class="readmore"><a href="#">Read more..</a></span> </article>-->
+
     </section>
     <aside class="group2">
       <h3>Latest news</h3>
