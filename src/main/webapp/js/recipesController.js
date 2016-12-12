@@ -2,14 +2,15 @@
  * Created by nadin on 12/6/16.
  */
 angular.module('tastyfood')
-    .controller('recipesController',['$scope', '$log', function($scope, $log){
-        $log.debug('recipes controller');
+    .controller('recipesController', ['$scope', '$log', '$http', function ($scope, $log, $http) {
+      $log.debug('recipes controller');
 
-        $scope.test = 'test';
-        $scope.recipes = [
-            {"title" : "title 1", "content" : "content 1", "image" : "images/picture2.jpg"},
-            {"title" : "title 2", "content" : "content 2","image" : "images/picture4.jpg"},
-            {"title" : "title 3", "content" : "content 3","image" : "images/picture5.jpg"}
-            ]
+
+      $http.get('/api/recipe').then(function (response) {
+        $scope.recipes = response.data;
+        $log.info('success ' + response.status)
+      }, function (response) {
+        $log.error('error ' + response.status + ', ' + response.statusText)
+      });
 
     }]);
